@@ -27,7 +27,7 @@ const ArrowButton = ({ type, disabled, handleClick }) => {
   );
 };
 
-function App() {
+export default function App() {
   const { loading, error, data } = useQuery(GET_POKEMONS, {
     variables: { first: pokemonsCount },
   });
@@ -79,5 +79,3 @@ function App() {
     </Container>
   );
 }
-
-export default App;

@@ -4,7 +4,7 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 
-export const Attacks = ({attacks}) => {
+export const Attacks = ({ attacks }) => {
   return (
     <TableContainer>
       <Table aria-label="pokemon-attack-details">

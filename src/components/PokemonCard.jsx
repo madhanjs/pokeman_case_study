@@ -12,8 +12,7 @@ import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import { Attacks } from './Attacks'
 
-export default function PokemonCard(props) {
-  const { pokemon } = props;
+export default function PokemonCard({ pokemon }) {
   return (
     <Card sx={{ display: "flex", flexDirection: "row" }}>
       <Box>

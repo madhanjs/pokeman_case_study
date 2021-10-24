@@ -6,14 +6,6 @@ export const GET_POKEMONS = gql`
       id
       number
       name
-      weight {
-        minimum
-        maximum
-      }
-      height {
-        minimum
-        maximum
-      }
       attacks {
         fast {
           name
@@ -26,13 +18,8 @@ export const GET_POKEMONS = gql`
           damage
         }
       }
-      classification
-      types
       resistant
       weaknesses
-      fleeRate
-      maxCP
-      maxHP
       image
     }
   }
