@@ -1,0 +1,70 @@
+[
+    {
+        "number": "001",
+        "name": "Bulbasaur",
+        "attacks": {
+            "fast": [
+                {
+                    "name": "Tackle",
+                    "type": "Normal",
+                    "damage": 12
+                }
+            ],
+            "special": [
+                {
+                    "name": "Power Whip",
+                    "type": "Grass",
+                    "damage": 70
+                }
+            ]
+        },
+        "resistant": [
+            "Water",
+            "Electric",
+            "Grass",
+            "Fighting",
+            "Fairy"
+        ],
+        "weaknesses": [
+            "Fire",
+            "Ice",
+            "Flying",
+            "Psychic"
+        ],
+        "image": "https://img.pokemondb.net/artwork/bulbasaur.jpg"
+    },
+    {
+        "number": "002",
+        "name": "Ivysaur",
+        "attacks": {
+            "fast": [
+                {
+                    "name": "Razor Leaf",
+                    "type": "Grass",
+                    "damage": 15
+                }
+            ],
+            "special": [
+                {
+                    "name": "Power Whip",
+                    "type": "Grass",
+                    "damage": 70
+                }
+            ]
+        },
+        "resistant": [
+            "Water",
+            "Electric",
+            "Grass",
+            "Fighting",
+            "Fairy"
+        ],
+        "weaknesses": [
+            "Fire",
+            "Ice",
+            "Flying",
+            "Psychic"
+        ],
+        "image": "https://img.pokemondb.net/artwork/ivysaur.jpg"
+    }
+]

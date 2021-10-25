@@ -23,4 +23,5 @@ export const Attacks = ({ attacks }) => {
       </Table>
     </TableContainer>
   );
-}
+};
+

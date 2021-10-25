@@ -1,33 +1,13 @@
 import React from "react";
 import { useState } from "react";
-import "./App.css";
 import { GET_POKEMONS } from "./constants.js";
 import { useQuery } from "@apollo/client";
 import PokemonCard from "./components/PokemonCard";
-import IconButton from "@mui/material/IconButton";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { ArrowButton } from "./components/ArrowButton"
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 
-const pokemonsCount = 151;
-
-const ArrowButton = ({ type, disabled, handleClick }) => {
-  return (
-    <IconButton
-      aria-label={type}
-      color="primary"
-      size="large"
-      disabled={disabled}
-      onClick={handleClick}
-      disableRipple
-    >
-      {type === "back" ? <ArrowBackIosIcon /> : <ArrowForwardIosIcon />}
-    </IconButton>
-  );
-};
-
-export default function App() {
+export default function App({ pokemonsCount = 151 }) {
   const { loading, error, data } = useQuery(GET_POKEMONS, {
     variables: { first: pokemonsCount },
   });
@@ -41,14 +21,14 @@ export default function App() {
       setCurrentPokemonNo(currentPokemonNo + 1);
   };
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error !!!</p>;
+  if (error) return <p>Error!!!</p>;
   if (data && data.pokemons) {
     currentPokemon = data.pokemons.find(
       (pokemon) => Number(pokemon.number) === currentPokemonNo
     );
   }
   return (
-    <Container maxWidth="100" sx={{bgcolor: "grey.100" }}>
+    <Container maxWidth="100" sx={{ bgcolor: "grey.100" }}>
       <Box
         sx={{
           display: "flex",
@@ -60,19 +40,25 @@ export default function App() {
       >
         <Box>
           <ArrowButton
-            type={"back"}
+            data-testid="backward-button"
             disabled={currentPokemonNo === 1}
             handleClick={handleBackButton}
+            type={"backward"}
           />
         </Box>
         <Box>
-          { currentPokemon ? <PokemonCard pokemon={currentPokemon} /> : "No Pokemons found" }
+          {currentPokemon ? (
+            <PokemonCard pokemon={currentPokemon} />
+          ) : (
+            "No Pokemons found"
+          )}
         </Box>
         <Box>
           <ArrowButton
-            type={"front"}
-            disabled={currentPokemonNo === 151}
+            data-testid="forward-button"
+            disabled={currentPokemonNo === pokemonsCount}
             handleClick={handleForwardButton}
+            type={"forward"}
           />
         </Box>
       </Box>

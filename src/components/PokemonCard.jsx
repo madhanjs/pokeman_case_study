@@ -10,23 +10,33 @@ import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
-import { Attacks } from './Attacks'
+import { Attacks } from "./Attacks";
 
 export default function PokemonCard({ pokemon }) {
   return (
     <Card sx={{ display: "flex", flexDirection: "row" }}>
       <Box>
-         <Typography gutterBottom variant="h4" component="div" sx={{ padding: 1}}>
+        <Typography
+          gutterBottom
+          variant="h4"
+          component="div"
+          sx={{ padding: 1 }}
+        >
           {pokemon.name}
         </Typography>
-        <Typography gutterBottom variant="h5" component="div" sx={{ padding: 1 }}>
+        <Typography
+          gutterBottom
+          variant="h5"
+          component="div"
+          sx={{ padding: 1 }}
+        >
           {"No: " + pokemon.number}
         </Typography>
         <CardMedia
           sx={{ width: 350 }}
           component="img"
           image={pokemon.image}
-          alt={"pokemon image"}
+          alt={pokemon.name + " image"}
           aria-label={pokemon.name + " image"}
         />
       </Box>
@@ -39,7 +49,7 @@ export default function PokemonCard({ pokemon }) {
                   <b> Resistant: </b>
                 </TableCell>
                 <TableCell align="left">
-                  { pokemon.resistant.join(", ") }
+                  {pokemon.resistant.join(", ")}
                 </TableCell>
               </TableRow>
               <TableRow>
@@ -47,7 +57,7 @@ export default function PokemonCard({ pokemon }) {
                   <b> Weakness: </b>
                 </TableCell>
                 <TableCell align="left">
-                   { pokemon.weaknesses.join(", ") }
+                  {pokemon.weaknesses.join(", ")}
                 </TableCell>
               </TableRow>
               <TableRow>
