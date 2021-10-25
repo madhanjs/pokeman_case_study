@@ -10,9 +10,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
-import { Attacks } from "./Attacks";
+import Attacks from "./Attacks";
 
-export default function PokemonCard({ pokemon }) {
+const PokemonCard = ({ pokemon }) => {
   return (
     <Card sx={{ display: "flex", flexDirection: "row" }}>
       <Box>
@@ -78,4 +78,6 @@ export default function PokemonCard({ pokemon }) {
       </CardContent>
     </Card>
   );
-}
+};
+
+export default PokemonCard;

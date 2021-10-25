@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import App from "./App";
 
 import { MockedProvider } from "@apollo/client/testing";
@@ -34,7 +34,7 @@ describe("App", function () {
   it("renders loading state", () => {
     const { queryByText } = render(
       <MockedProvider mocks={mocks}>
-        <App pokemonsCount={2}/>
+        <App pokemonsCount={2} />
       </MockedProvider>
     );
     expect(queryByText("Loading...")).toBeInTheDocument();
@@ -54,7 +54,7 @@ describe("App", function () {
     ];
     const { queryByText } = render(
       <MockedProvider mocks={errorMock}>
-        <App pokemonsCount={2}/>
+        <App pokemonsCount={2} />
       </MockedProvider>
     );
     await new Promise((resolve) => setTimeout(resolve, 0)); // wait for response
@@ -64,7 +64,7 @@ describe("App", function () {
   it("renders first pokemon", async () => {
     const { queryByText } = render(
       <MockedProvider mocks={mocks} addTypename={false}>
-        <App pokemonsCount={2}/>
+        <App pokemonsCount={2} />
       </MockedProvider>
     );
     await new Promise((resolve) => setTimeout(resolve, 0)); // wait for response
@@ -95,7 +95,7 @@ describe("App", function () {
 
     const { queryByText } = render(
       <MockedProvider mocks={mocks} addTypename={false}>
-        <App pokemonsCount={2}/>
+        <App pokemonsCount={2} />
       </MockedProvider>
     );
     await new Promise((resolve) => setTimeout(resolve, 0)); // wait for response
@@ -103,13 +103,13 @@ describe("App", function () {
   });
 
   it("renders next pokemon when forward button clicked", async () => {
-    const { queryByText } = render(
+    const { queryByText, getByLabelText } = render(
       <MockedProvider mocks={mocks} addTypename={false}>
-        <App pokemonsCount={2}/>
+        <App pokemonsCount={2} />
       </MockedProvider>
     );
     await new Promise((resolve) => setTimeout(resolve, 0)); // wait for response
-    fireEvent.click(screen.getByLabelText("forward"));
+    fireEvent.click(getByLabelText("forward"));
     await new Promise((resolve) => setTimeout(resolve, 0));
     expect(queryByText(mockPokemons[1].name)).toBeInTheDocument();
     expect(queryByText("No: " + mockPokemons[1].number)).toBeInTheDocument();
@@ -118,7 +118,7 @@ describe("App", function () {
   it("renders previous pokemon when backward button clicked", async () => {
     const { queryByText, getByLabelText } = render(
       <MockedProvider mocks={mocks} addTypename={false}>
-        <App pokemonsCount={2}/>
+        <App pokemonsCount={2} />
       </MockedProvider>
     );
     await new Promise((resolve) => setTimeout(resolve, 0)); // wait for response
@@ -133,27 +133,31 @@ describe("App", function () {
   it("renders first pokemon with backward button disabled", async () => {
     const { queryByText, getByLabelText } = render(
       <MockedProvider mocks={mocks} addTypename={false}>
-        <App pokemonsCount={2}/>
+        <App pokemonsCount={2} />
       </MockedProvider>
     );
     await new Promise((resolve) => setTimeout(resolve, 0)); // wait for response
     expect(queryByText(mockPokemons[0].name)).toBeInTheDocument();
     expect(queryByText("No: " + mockPokemons[0].number)).toBeInTheDocument();
-    expect(getByLabelText("backward").closest('button')).toHaveAttribute('disabled');
+    expect(getByLabelText("backward").closest("button")).toHaveAttribute(
+      "disabled"
+    );
   });
 
   it("renders last pokemon with forward button disabled", async () => {
     const { queryByText, getByLabelText } = render(
       <MockedProvider mocks={mocks} addTypename={false}>
-        <App pokemonsCount={2}/>
+        <App pokemonsCount={2} />
       </MockedProvider>
     );
     await new Promise((resolve) => setTimeout(resolve, 0)); // wait for response
-  
+
     fireEvent.click(getByLabelText("forward"));
     await new Promise((resolve) => setTimeout(resolve, 0)); // wait for response
     expect(queryByText(mockPokemons[1].name)).toBeInTheDocument();
     expect(queryByText("No: " + mockPokemons[1].number)).toBeInTheDocument();
-    expect(getByLabelText("forward").closest('button')).toHaveAttribute('disabled');
+    expect(getByLabelText("forward").closest("button")).toHaveAttribute(
+      "disabled"
+    );
   });
 });

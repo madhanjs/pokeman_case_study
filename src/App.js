@@ -3,11 +3,11 @@ import { useState } from "react";
 import { GET_POKEMONS } from "./constants.js";
 import { useQuery } from "@apollo/client";
 import PokemonCard from "./components/PokemonCard";
-import { ArrowButton } from "./components/ArrowButton"
+import ArrowButton from "./components/ArrowButton";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 
-export default function App({ pokemonsCount = 151 }) {
+const App = ({ pokemonsCount = 151 }) => {
   const { loading, error, data } = useQuery(GET_POKEMONS, {
     variables: { first: pokemonsCount },
   });
@@ -64,4 +64,6 @@ export default function App({ pokemonsCount = 151 }) {
       </Box>
     </Container>
   );
-}
+};
+
+export default App;
